@@ -1,0 +1,20 @@
+from http.server import HTTPServer, BaseHTTPRequestHandler
+class helloHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(bytes("<html><body><h1>Hello, Joseph!</h1></body></html>", "utf-8"))
+
+
+
+
+def main():
+    Port = 8000
+    server = HTTPServer(("", Port), helloHandler)
+    print("Server now Running...")
+    server.serve_forever()
+
+
+if __name__ == "__main__":
+    main()            
